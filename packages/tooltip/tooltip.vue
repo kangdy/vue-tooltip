@@ -5,9 +5,11 @@
 </template>
 
 <script setup lang="ts" name="tooltip">
-import { ref, onMounted } from 'vue-demi';
+import { ref, onMounted, install } from 'vue-demi';
 import { createPopper } from '@popperjs/core'
 import type { Placement } from '@popperjs/core'
+
+install()
 
 const props = withDefaults(
   defineProps<{
