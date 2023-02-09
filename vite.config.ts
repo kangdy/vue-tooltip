@@ -1,17 +1,18 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), cssInjectedByJsPlugin({topExecutionPriority: false}),],
   optimizeDeps: {
     exclude: ['vue-demi']
   },
   build: {
     outDir: 'lib',
     lib: {
-      entry: resolve(__dirname, 'packages/index.ts'),
+      entry: resolve(__dirname, 'packages/tooltip/tooltip.vue'),
       name: 'vue-tooltip',
       fileName: 'tooltip',
     },
@@ -22,6 +23,8 @@ export default defineConfig({
           vue: 'Vue'
         }
       }
-    }
+    },
+  },
+  css: {
   }
 })
