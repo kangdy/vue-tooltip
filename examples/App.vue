@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import tooltip from '../lib/tooltip.mjs'
+// console.log(a);
+
 // import '../lib/style.css'
 </script>
 

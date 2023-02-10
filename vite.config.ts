@@ -12,7 +12,7 @@ export default defineConfig({
   build: {
     outDir: 'lib',
     lib: {
-      entry: resolve(__dirname, 'packages/tooltip/tooltip.vue'),
+      entry: resolve(__dirname, 'packages/index.ts'),
       name: 'vue-tooltip',
       fileName: 'tooltip',
     },
@@ -25,6 +25,4 @@ export default defineConfig({
       }
     },
   },
-  css: {
-  }
 })
