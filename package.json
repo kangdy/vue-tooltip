@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "vite-plugin-css-injected-by-js": "^3.0.0",
     "vue-demi": "latest"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1"
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
@@ -45,10 +45,12 @@
     "@babel/types": "^7.20.7",
     "@types/node": "^18.11.19",
     "@vitejs/plugin-vue": "^4.0.0",
+    "sass": "^1.62.0",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
+    "vite-plugin-css-injected-by-js": "^3.1.0",
     "vue": "^3.2.47",
-    "vue-tsc": "^1.0.24",
-    "vue2": "npm:vue@^2.6.10"
-  }
+    "vue-tsc": "^1.0.24"
+  },
+  "types": "./types/index.d.ts"
 }
