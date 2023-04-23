@@ -11,11 +11,11 @@
     "lib"
   ],
   "module": "./lib/tooltip.mjs",
-  "main": "./lib/tooltip.umd.js",
+  "main": "./lib/tooltip.js",
   "exports": {
     ".": {
       "import": "./lib/tooltip.mjs",
-      "require": "./lib/tooltip.umd.js"
+      "require": "./lib/tooltip.js"
     }
   },
   "scripts": {

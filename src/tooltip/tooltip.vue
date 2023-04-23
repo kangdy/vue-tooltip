@@ -1,12 +1,12 @@
 <template>
-  <span
+  <div
     ref="tooltipRef"
     class="v-tooltip-ref"
     @mouseenter="onmouseenter"
     @mouseleave="onmouseleave"
   >
     <slot></slot>
-  </span>
+  </div>
 </template>
 
 <script setup lang="ts">
