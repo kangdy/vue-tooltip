@@ -25,9 +25,9 @@ export default defineConfig({
       },
     },
   },
-  resolve: {
-    alias: {
-      '@': resolve('packages/'),
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     '@': resolve('packages/'),
+  //   },
+  // },
 });
