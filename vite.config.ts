@@ -11,13 +11,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'lib',
+    target: 'modules',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'vue-tooltip',
       fileName: 'tooltip',
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', '@vue/composition-api', '@popperjs/core'],
       output: {
         globals: {
           vue: 'Vue',
