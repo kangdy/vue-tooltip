@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue-demi';
+import { ref, onMounted } from 'vue-demi';
 import { createPopper } from '@popperjs/core';
 import type { Placement } from '@popperjs/core';
 
