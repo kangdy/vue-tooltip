@@ -1,6 +1,6 @@
 {
   "name": "vue-text-tooltip",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "tooltip for Vue",
   "private": false,
   "keywords": [
@@ -10,11 +10,11 @@
   "files": [
     "lib"
   ],
-  "module": "./lib/tooltip.es.js",
+  "module": "./lib/tooltip.mjs",
   "main": "./lib/tooltip.umd.js",
   "exports": {
     ".": {
-      "import": "./lib/tooltip.es.js",
+      "import": "./lib/tooltip.mjs",
       "require": "./lib/tooltip.umd.js"
     }
   },
