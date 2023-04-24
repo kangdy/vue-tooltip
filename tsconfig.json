@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
+    "baseUrl": ".", // 解析非相对模块的基地址，默认是当前目录
     "jsx": "preserve",
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "declaration": true,
+    "types": ["vite/client"],
+    "declarationDir": "types",
+    "useDefineForClassFields": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom", "DOM.Iterable"]
   },
   "include": [
     "src/**/*.ts",
@@ -19,6 +26,7 @@
     "examples/**/*.ts",
     "examples/**/*.d.ts",
     "examples/**/*.tsx",
-    "examples/**/*.vue"
+    "examples/**/*.vue",
+    "types/*.d.ts"
   ]
 }

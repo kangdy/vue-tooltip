@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-// import tooltip from '../src/tooltip/tooltip.vue'
-import tooltip from '../lib/tooltip.mjs'
+import tooltip from '../src/tooltip/tooltip.vue'
+// import tooltip from 'vue-text-tooltip'
+
 // console.log(a);
 
 const count = ref(0)
