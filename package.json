@@ -1,21 +1,23 @@
 {
   "name": "vue-text-tooltip",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "tooltip for Vue",
   "private": false,
   "keywords": [
     "tooltip",
-    "vue-tooltip"
+    "vue-tooltip",
+    "vue-text-tooltip",
+    "text-ellipsis"
   ],
   "files": [
     "lib"
   ],
-  "module": "./lib/tooltip.mjs",
-  "main": "./lib/tooltip.js",
+  "module": "./es/index.js",
+  "main": "./lib/index.js",
   "exports": {
     ".": {
-      "import": "./lib/tooltip.mjs",
-      "require": "./lib/tooltip.js"
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
     }
   },
   "scripts": {
@@ -53,5 +55,5 @@
     "vue": "^3.2.47",
     "vue-tsc": "^1.0.24"
   },
-  "types": "./types/index.d.ts"
+  "types": "types/index.d.ts"
 }
