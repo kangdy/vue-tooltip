@@ -26,8 +26,9 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     });
     function onmouseenter(e) {
       const target = e.target;
-      const range = new Range();
-      range.selectNodeContents(target);
+      const range = document.createRange();
+      range.setStart(target, 0);
+      range.setEnd(target, 1);
       const rect = range.getBoundingClientRect();
       const targetRect = target.getBoundingClientRect();
       if (rect.width > targetRect.width || props.prompt) {
@@ -40,6 +41,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       selection == null ? void 0 : selection.removeAllRanges();
     }
     function createTooltip(el) {
+      if (!el)
+        return;
       showTooltip();
       tooltipDom.classList.remove("light", "dark");
       tooltipDom.classList.add(props.theme);
@@ -76,7 +79,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   }
 });
 const tooltip_vue_vue_type_style_index_0_lang = "";
-const tooltip_vue_vue_type_style_index_1_scoped_952a7929_lang = "";
+const tooltip_vue_vue_type_style_index_1_scoped_1fb17fa4_lang = "";
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -84,7 +87,7 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const tooltip = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-952a7929"]]);
+const tooltip = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-1fb17fa4"]]);
 tooltip.install = (App) => {
   App.component(tooltip.__name, tooltip);
 };
@@ -96,7 +99,7 @@ export {
   try {
     if (typeof document != "undefined") {
       var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode('#v-tooltip {\n  max-width: 300px;\n  background: #212121;\n  box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.02), 0 2px 6px 6px rgba(0, 0, 0, 0.02), 0 2px 6px 0 rgba(0, 0, 0, 0.04);\n  color: white;\n  padding: 4px 8px;\n  font-size: 14px;\n  border-radius: 4px;\n  word-wrap: break-word;\n  z-index: 999999;\n  display: none;\n}\n#v-tooltip.light {\n  background: #fff;\n  color: rgba(0, 0, 0, 0.8392156863);\n}\n#v-arrow,\n#v-arrow::before {\n  position: absolute;\n  width: 8px;\n  height: 8px;\n  background: inherit;\n}\n#v-arrow {\n  visibility: hidden;\n}\n#v-arrow::before {\n  visibility: visible;\n  content: "";\n  transform: rotate(45deg);\n}\n#v-tooltip[data-popper-placement^=top] > #v-arrow {\n  bottom: -4px;\n}\n#v-tooltip[data-popper-placement^=bottom] > #v-arrow {\n  top: -4px;\n}\n#v-tooltip[data-popper-placement^=left] > #v-arrow {\n  right: -4px;\n}\n#v-tooltip[data-popper-placement^=right] > #v-arrow {\n  left: -4px;\n}.v-tooltip-ref[data-v-952a7929] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}'));
+      elementStyle.appendChild(document.createTextNode('#v-tooltip {\n  max-width: 300px;\n  background: #212121;\n  box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.02), 0 2px 6px 6px rgba(0, 0, 0, 0.02), 0 2px 6px 0 rgba(0, 0, 0, 0.04);\n  color: white;\n  padding: 4px 8px;\n  font-size: 14px;\n  border-radius: 4px;\n  word-wrap: break-word;\n  z-index: 999999;\n  display: none;\n}\n#v-tooltip.light {\n  background: #fff;\n  color: rgba(0, 0, 0, 0.8392156863);\n}\n#v-arrow,\n#v-arrow::before {\n  position: absolute;\n  width: 8px;\n  height: 8px;\n  background: inherit;\n}\n#v-arrow {\n  visibility: hidden;\n}\n#v-arrow::before {\n  visibility: visible;\n  content: "";\n  transform: rotate(45deg);\n}\n#v-tooltip[data-popper-placement^=top] > #v-arrow {\n  bottom: -4px;\n}\n#v-tooltip[data-popper-placement^=bottom] > #v-arrow {\n  top: -4px;\n}\n#v-tooltip[data-popper-placement^=left] > #v-arrow {\n  right: -4px;\n}\n#v-tooltip[data-popper-placement^=right] > #v-arrow {\n  left: -4px;\n}.v-tooltip-ref[data-v-1fb17fa4] {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}'));
       document.head.appendChild(elementStyle);
     }
   } catch (e) {

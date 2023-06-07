@@ -1,107 +1,96 @@
 <template>
-  <div
-    ref="tooltipRef"
-    class="v-tooltip-ref"
-    @mouseenter="onmouseenter"
-    @mouseleave="onmouseleave"
-  >
+  <div ref="tooltipRef" class="v-tooltip-ref" @mouseenter="onmouseenter" @mouseleave="onmouseleave">
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue-demi';
-import { createPopper } from '@popperjs/core';
-import type { Placement } from '@popperjs/core';
+import { createPopper } from '@popperjs/core'
+import type { Placement } from '@popperjs/core'
+import { ref, onMounted } from 'vue-demi'
 
-const props = withDefaults(
-  defineProps<{
-    text?: string;
-    placement?: Placement;
-    tooltipStyle?: Partial<CSSStyleDeclaration>;
-    theme?: 'dark' | 'light';
-    prompt?: boolean;
-  }>(),
-  {
-    theme: 'dark',
-    placement: 'auto',
-    prompt: false,
-  }
-);
+interface Props {
+  text?: string
+  placement?: Placement
+  tooltipStyle?: Partial<CSSStyleDeclaration>
+  theme?: 'dark' | 'light'
+  prompt?: boolean
+}
 
-let tooltipDom = null as unknown as HTMLElement;
-const tooltipRef = ref<HTMLElement | null>(null);
+const props = withDefaults(defineProps<Props>(), {
+  theme: 'dark',
+  placement: 'auto',
+  prompt: false,
+})
+
+let tooltipDom = null as unknown as HTMLElement
+const tooltipRef = ref<HTMLElement | null>(null)
 onMounted(() => {
-  tooltipDom = document.querySelector('#v-tooltip') as HTMLElement;
+  tooltipDom = document.querySelector('#v-tooltip') as HTMLElement
   if (!tooltipDom) {
-    tooltipDom = document.createElement('div');
-    tooltipDom.setAttribute('id', 'v-tooltip');
-    tooltipDom.addEventListener('mouseenter', showTooltip);
-    tooltipDom.addEventListener('mouseleave', hideTooltip);
-    const body = document.querySelector('body');
-    body?.appendChild(tooltipDom);
+    tooltipDom = document.createElement('div')
+    tooltipDom.setAttribute('id', 'v-tooltip')
+    tooltipDom.addEventListener('mouseenter', showTooltip)
+    tooltipDom.addEventListener('mouseleave', hideTooltip)
+    const body = document.querySelector('body')
+    body?.appendChild(tooltipDom)
   }
-});
+  // tooltipRef.value?.style.setProperty('-webkit-line-clamp', String(props.line))
+})
 
 function onmouseenter(e: MouseEvent) {
-  const target = e.target as HTMLElement;
-  const range = new Range();
-  // range.setStart(target.firstChild, 0);
-  // range.setEnd(target.lastChild, target.lastChild?.textContent?.length);
-  range.selectNodeContents(target)
-  const rect = range.getBoundingClientRect();
-  const targetRect = target.getBoundingClientRect();
-
+  const target = e.target as HTMLElement
+  const range = document.createRange()
+  range.setStart(target, 0)
+  range.setEnd(target, 1)
+  const rect = range.getBoundingClientRect()
+  const targetRect = target.getBoundingClientRect()
   // 宽度用来判断单行文本超出，高度用来判断多行文本超出
+  // if (rect.width > targetRect.width || rect.height > targetRect.height) {
   if (rect.width > targetRect.width || props.prompt) {
-    createTooltip(target);
+    createTooltip(target)
   }
 }
 
 function onmouseleave() {
-  hideTooltip();
-  const selection = window.getSelection();
-  selection?.removeAllRanges();
+  hideTooltip()
+  const selection = window.getSelection()
+  selection?.removeAllRanges()
 }
 
 function createTooltip(el: HTMLElement) {
-  showTooltip();
-  tooltipDom.classList.remove('light', 'dark');
-  tooltipDom.classList.add(props.theme);
-  tooltipDom.innerHTML = `${
-    props.text ?? el.innerText
-  }<div id="v-arrow" data-popper-arrow></div>`;
+  if (!el) return
+  showTooltip()
+  tooltipDom.classList.remove('light', 'dark')
+  tooltipDom.classList.add(props.theme)
+  tooltipDom.innerHTML = `${props.text ?? el.innerText}<div id="v-arrow" data-popper-arrow></div>`
 
   if (props.tooltipStyle) {
-    (
+    ;(
       Object.entries(props.tooltipStyle) as [
         keyof CSSStyleDeclaration,
         CSSStyleDeclaration[keyof CSSStyleDeclaration]
       ][]
-    ).forEach((item) => {
-      setStyle(tooltipDom, ...item);
-    });
+    ).forEach(item => {
+      setStyle(tooltipDom, ...item)
+    })
   }
 
   createPopper(el, tooltipDom, {
     placement: props.placement,
-  });
+  })
 }
 
 function hideTooltip() {
-  tooltipDom.style.display = 'none';
+  tooltipDom.style.display = 'none'
 }
 
 function showTooltip() {
-  tooltipDom.style.display = 'block';
+  tooltipDom.style.display = 'block'
 }
 
-function setStyle<T extends keyof CSSStyleDeclaration>(
-  dom: HTMLElement,
-  key: T,
-  value: CSSStyleDeclaration[T]
-) {
-  dom.style[key] = value;
+function setStyle<T extends keyof CSSStyleDeclaration>(dom: HTMLElement, key: T, value: CSSStyleDeclaration[T]) {
+  dom.style[key] = value
 }
 </script>
 
@@ -109,8 +98,7 @@ function setStyle<T extends keyof CSSStyleDeclaration>(
 #v-tooltip {
   max-width: 300px;
   background: #212121;
-  box-shadow: 0 -2px 4px 0 rgb(0 0 0 / 2%), 0 2px 6px 6px rgb(0 0 0 / 2%),
-    0 2px 6px 0 rgb(0 0 0 / 4%);
+  box-shadow: 0 -2px 4px 0 rgb(0 0 0 / 2%), 0 2px 6px 6px rgb(0 0 0 / 2%), 0 2px 6px 0 rgb(0 0 0 / 4%);
   color: white;
   padding: 4px 8px;
   font-size: 14px;
