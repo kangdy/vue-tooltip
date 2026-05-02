@@ -1,12 +1,19 @@
-import { ComponentOptions } from 'vue'
+import { Component } from 'vue'
 import type { Placement } from '@popperjs/core'
 
-declare const Tooltip: ComponentOptions<{
+export interface TooltipProps {
   text?: string
   placement?: Placement
-  tooltipStyle?: Partial<CSSStyleDeclaration>
   theme?: 'dark' | 'light'
-  prompt?: boolean
-}>
+  forceShow?: boolean
+  maxWidth?: number
+  delay?: number
+}
+
+export interface TooltipComponent extends Component {
+  install: (app: any) => void
+}
+
+declare const Tooltip: TooltipComponent
 
 export default Tooltip

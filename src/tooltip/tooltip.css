@@ -1,0 +1,57 @@
+.v-tooltip {
+  position: absolute;
+  max-width: 300px;
+  background: #212121;
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 6px;
+  word-wrap: break-word;
+  word-break: break-word;
+  z-index: 999999;
+  display: none;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.v-tooltip.light {
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.85);
+  border: 1px solid #e8e8e8;
+}
+
+.v-tooltip-arrow,
+.v-tooltip-arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  z-index: -1;
+}
+
+.v-tooltip-arrow {
+  visibility: hidden;
+}
+
+.v-tooltip-arrow::before {
+  visibility: visible;
+  content: '';
+  transform: rotate(45deg);
+}
+
+.v-tooltip[data-popper-placement^='top'] > .v-tooltip-arrow {
+  bottom: -4px;
+}
+
+.v-tooltip[data-popper-placement^='bottom'] > .v-tooltip-arrow {
+  top: -4px;
+}
+
+.v-tooltip[data-popper-placement^='left'] > .v-tooltip-arrow {
+  right: -4px;
+}
+
+.v-tooltip[data-popper-placement^='right'] > .v-tooltip-arrow {
+  left: -4px;
+}

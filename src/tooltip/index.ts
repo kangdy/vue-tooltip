@@ -1,7 +1,8 @@
-import tooltip from './tooltip.vue'
+import Tooltip from './tooltip.vue'
+import './tooltip.css'
 
-tooltip.install = (App: { component: (arg0: any, arg1: any) => void; }) => {
-	App.component(tooltip.__name, tooltip);
-};
+Tooltip.install = (app: any) => {
+  app.component(Tooltip.name || 'Tooltip', Tooltip)
+}
 
-export default tooltip
+export default Tooltip
