@@ -1,5 +1,7 @@
 # vue-text-tooltip
 
+[简体中文](./README_zh.md) | English
+
 A Vue 3 component that automatically shows ellipsis when text overflows and displays the full content on hover.
 
 ## Features

@@ -1,5 +1,7 @@
 # vue-text-tooltip
 
+简体中文 | [English](./README.md)
+
 一个 Vue 3 组件，当文本溢出时自动显示省略号，并在鼠标悬停时显示完整内容。
 
 ## 特性
